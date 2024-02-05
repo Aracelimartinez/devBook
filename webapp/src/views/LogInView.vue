@@ -1,27 +1,32 @@
 <script setup>
+  import { useRouter } from 'vue-router';
 
+  const router = useRouter();
+
+  const redirectToRegister = () => {
+  router.push('/register');
+  };
 </script>
 
 <template>
   <main>
     <div id="login-page" class="h-dvh text-color-text-body">
-      <div class="m-5 p-5 w-10/12">
-        <img alt="LogIn image"  src="@/assets/undraw_right_places_re_3sve.svg"/>
-      </div>
+      <img class="m-5 p-5 w-10/12" alt="LogIn image"  src="@/assets/images/undraw_login.svg"/>
+
       <div class="w-10/12 flex flex-col justify-center">
         <h1 class="mb-5 text-3xl font-bold text-center">Seja bem vindo ao <span class="text-color-primary">DevBook</span></h1>
         <!-- Sign in card -->
-        <div class=" flex flex-col p-4 text-base signin-card">
-          <h2 class="my-2 text-xl font-bold">Iniciar sessão</h2>
+        <div class=" flex flex-col p-7 text-base signin-card">
+          <h2 class="mb-3 text-xl font-bold">Iniciar sessão</h2>
           <form class="flex flex-col" action="" name="login-fom">
-            <input class="my-2 p-2 border rounded-md border-color-secondary hover:border-color-primary duration-150 fontAwesome" type="email" placeholder="&#xf0e0;  E-mail" required="required">
-            <input class="my-2 p-2 border rounded-md border-color-secondary hover:border-color-primary duration-150 fontAwesome" type="password" placeholder="&#xf084;  Senha" required="required">
-            <button type="submit" class="mt-2 py-2 px-6  text-white bg-color-primary rounded-md hover:opacity-80 duration-150">Log in</button>
+            <input class="my-3 p-2 border rounded-md border-color-details hover:border-color-primary duration-150 fontAwesome" type="email" placeholder="&#xf0e0;  E-mail" required="required">
+            <input class="my-3 p-2 border rounded-md border-color-details hover:border-color-primary duration-150 fontAwesome" type="password" placeholder="&#xf084;  Senha" required="required">
+            <button type="submit" class="mt-3 py-2 px-6  text-white bg-color-primary rounded-md hover:bg-color-secondary duration-150">Entrar</button>
           </form>
-          <div class="my-2 text-line">
+          <div class="my-3 text-line">
             <span>ou</span>
           </div>
-          <button class="mb-3 py-2 px-6 bg-color-secondary rounded-md hover:opacity-80 duration-150">Criar conta</button>
+          <button @click="redirectToRegister" class="mb-3 py-2 px-6 bg-color-details rounded-md hover:opacity-80 duration-150">Criar conta</button>
         </div>
       </div>
     </div>
@@ -38,7 +43,7 @@
 
   .signin-card {
     background-color: #fff;
-    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.075);
     border-radius: 8px;
     max-width: 600px;
   }
