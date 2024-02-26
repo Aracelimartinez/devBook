@@ -1,0 +1,34 @@
+version: '3'
+services:
+  db:
+    container_name: devbook_db_conteiner
+    build:
+      context: ./api/sql
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/sql/db.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend_network
+    restart: always
+
+  server:
+    container_name: devbook_api_conteiner
+    depends_on:
+      - db
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    networks:
+      - backend_network
+    restart: always
+
+volumes:
+  pgdata: {}
+
+networks:
+  backend_network:
+    driver: bridge
