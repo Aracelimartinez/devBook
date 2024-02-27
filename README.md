@@ -16,15 +16,15 @@ The DevBook application uses two main images:
 To run the DevBook application using Docker and Docker Compose, follow the steps below:
 
   1. Clone the DevBook application repository:
-  ```bash
-  git clone https://github.com/Aracelimartinez/devBook.git
-  ```
+      ```bash
+      git clone https://github.com/Aracelimartinez/devBook.git
+      ```
 
   2. Navigate to the cloned directory and execute Docker Compose:
-  ```bash
-  cd devBook
-  docker-compose up
-  ```
+      ```bash
+      cd devBook
+      docker-compose up
+      ```
   3. The application and database will be initialized. The API will be accessible at http://localhost:8000.
 
 
