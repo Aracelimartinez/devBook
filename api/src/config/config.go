@@ -38,7 +38,7 @@ func LoadEnv() Config {
 	var err error
 
 	if err = godotenv.Load(); err != nil {
-		log.Fatal(err)
+		log.Printf("No .env file found or error loading it: %v", err)
 	}
 
 	GlobalConfig = Config{

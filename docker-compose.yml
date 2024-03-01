@@ -3,10 +3,10 @@ services:
   db:
     container_name: devbook_db_conteiner
     build:
-      context: ./api/sql
+      context: ./sql
       dockerfile: Dockerfile
     env_file:
-      - ./api/sql/db.env
+      - ./sql/db.env
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
