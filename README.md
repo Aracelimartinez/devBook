@@ -36,7 +36,6 @@ To run the DevBook application using Docker and Docker Compose, follow the steps
 
   5. Execute Docker Compose in the devBook directory:
       ```bash
-      cd devBook
       docker-compose up
       ```
   3. The application and database will be initialized. The API will be accessible at http://localhost:8000.
