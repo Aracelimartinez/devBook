@@ -3,15 +3,6 @@
 ## Introduction
 This document provides an overview of how to run the DevBook application and the PostgreSQL database service. DevBook is a social network where users can share thoughts, interact with posts, comments, and manage their profiles.
 
-
-## Docker Images
-The DevBook application uses two main images:
-
-1. **DevBook API Application:** Image containing the environment, dependencies and code needed to run the DevBook application API.
-**Docker Hub Link**: [https://hub.docker.com/repository/docker/aracelimartinez/devbook-api/general]
-2. **PostgreSQL:** Official PostgreSQL image configured for use with the DevBook application.
-**Docker Hub Link**: [https://hub.docker.com/repository/docker/aracelimartinez/devbook-db/general]
-
 ### How to Use
 To run the DevBook application using Docker and Docker Compose, follow the steps below:
 
@@ -19,14 +10,46 @@ To run the DevBook application using Docker and Docker Compose, follow the steps
       ```bash
       git clone https://github.com/Aracelimartinez/devBook.git
       ```
+  2. Navigate to the cloned directory
+      ```bash
+      cd devBook
+      ```
+  3. Configure the env variables for the database container creating a db.env file in the ./sql directory with the following variables.
+      ```bash
+      POSTGRES_DB = "devbook"
+      POSTGRES_USER = "your_db_username"
+      POSTGRES_PASSWORD = "your_db_password"
+      ```
+  4. Configure the env variables for the API container creating a .env file in the ./api directory with the following variables.
+      ```bash
+      # Database environment variables
+      DB_NAME = "devbook" # Name of the database
+      ROL_NAME = "your_db_username" # Name of the database user
+      ROL_PASSWORD = "your_db_password" # Password to access the database
+      DB_HOST = "db" # Name of the service in the docker-compose file
+      DB_PORT = "5432" # Port of your database service
 
-  2. Navigate to the cloned directory and execute Docker Compose:
+      #  Environment variables of the API
+      API_PORT= "8000" #Port of the API
+      SECRET_KEY = "your_secret_key" # Secret key used to generate the access token for users
+      ```
+
+  5. Execute Docker Compose in the devBook directory:
       ```bash
       cd devBook
       docker-compose up
       ```
   3. The application and database will be initialized. The API will be accessible at http://localhost:8000.
 
+## Docker Images
+You can find The DevBook application images in the links bellow:
+
+1. **DevBook API Application:** Image containing the environment, dependencies and code needed to run the DevBook application API.
+**Docker Hub Link**: [https://hub.docker.com/repository/docker/aracelimartinez/devbook-api/general]
+2. **PostgreSQL:** Official PostgreSQL image configured for use with the DevBook application.
+**Docker Hub Link**: [https://hub.docker.com/repository/docker/aracelimartinez/devbook-db/general]
+
+There you can find instructions of how to use each image.
 
 ## DevBook API Endpoints
 
