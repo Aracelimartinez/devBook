@@ -4,6 +4,7 @@ import (
 	"api/src/middlewares"
 	"net/http"
 
+	"github.com/rs/cors"
 	"github.com/gorilla/mux"
 )
 
@@ -16,7 +17,17 @@ type Endopoints struct {
 }
 
 // Coloca todas as rotas dentro do router
-func Configure(router *mux.Router) *mux.Router {
+func Configure(router *mux.Router) http.Handler {
+	// Initialize CORS options
+	corsOptions := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:5173"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
+		AllowedHeaders:   []string{"Content-Type", "Authorization"},
+		AllowCredentials: true,
+	})
+
+	 handler := corsOptions.Handler(router)
+
 	endpoints := userEndpoints
 	endpoints = append(endpoints, loginEndpoint)
 	endpoints = append(endpoints, postsEndpoints...)
@@ -30,5 +41,5 @@ func Configure(router *mux.Router) *mux.Router {
 		}
 	}
 
-	return router
+	return handler
 }
